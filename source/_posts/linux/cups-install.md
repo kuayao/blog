@@ -1,8 +1,10 @@
 ---
+layout: linux
 title: Linux Cups 实战
-date: 2024-08-06 17:24:31
-tags:
+date: 2024-08-06 23:04:28
+tags: linux
 ---
+
 
 本文以Rocky Linux 8.9 (Green Obsidian)为例<br>
 使用的身份均为root，并且没有启用防火墙。<br>
@@ -78,15 +80,15 @@ systemctl start cups
 4. 添加打印机以得实针式打印机为例
 
 - 打印机管理页面
-  ![](/image/linux/cups/管理打印机.png)
+  ![](cups-install/管理打印机.png)
 - 添加打印机
-  ![](/image/linux/cups/添加打印机.png)
-  ![](/image/linux/cups/添加打印机2.png)
-  ![](/image/linux/cups/添加打印机3.png)
+  ![](cups-install/添加打印机.png)
+  ![](cups-install/添加打印机2.png)
+  ![](cups-install/添加打印机3.png)
   配置驱动，手动添加PDD驱动，配置完成后，点击Add Printer
-  ![](/image/linux/cups/添加打印机4.png)
+  ![](cups-install/添加打印机4.png)
 - 设置打印机首选项
-  ![](/image/linux/cups/打印机首选项.png)
+  ![](cups-install/打印机首选项.png)
 
 ### 问题汇总
 

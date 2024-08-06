@@ -17,15 +17,15 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>CUPS - 夸耀的学习笔记</title>
+  <title>Linux Cups 实战 - 夸耀的学习笔记</title>
 
   
-    <meta name="description" content="综合打印平台 CUPS Install 文档本文以Rocky Linux 8.9 (Green Obsidian)为例使用的身份均为root，并且没有启用防火墙。  安装cups  12sudo yum install cupssudo yum install foomatic-filters   配置 cups  1sudo nano &#x2F;etc&#x2F;cups&#x2F;cupsd.conf  配置监听的ip地">
+    <meta name="description" content="本文以Rocky Linux 8.9 (Green Obsidian)为例使用的身份均为root，并且没有启用防火墙。  安装cups  12sudo yum install cupssudo yum install foomatic-filters   配置 cups  1sudo nano &#x2F;etc&#x2F;cups&#x2F;cupsd.conf  配置监听的ip地址和端口 将Listen localhost">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CUPS">
+<meta property="og:title" content="Linux Cups 实战">
 <meta property="og:url" content="http://example.com/2024/08/06/linux/CUPS/index.html">
 <meta property="og:site_name" content="夸耀的学习笔记">
-<meta property="og:description" content="综合打印平台 CUPS Install 文档本文以Rocky Linux 8.9 (Green Obsidian)为例使用的身份均为root，并且没有启用防火墙。  安装cups  12sudo yum install cupssudo yum install foomatic-filters   配置 cups  1sudo nano &#x2F;etc&#x2F;cups&#x2F;cupsd.conf  配置监听的ip地">
+<meta property="og:description" content="本文以Rocky Linux 8.9 (Green Obsidian)为例使用的身份均为root，并且没有启用防火墙。  安装cups  12sudo yum install cupssudo yum install foomatic-filters   配置 cups  1sudo nano &#x2F;etc&#x2F;cups&#x2F;cupsd.conf  配置监听的ip地址和端口 将Listen localhost">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/%E7%AE%A1%E7%90%86%E6%89%93%E5%8D%B0%E6%9C%BA.png">
 <meta property="og:image" content="http://example.com/%E6%B7%BB%E5%8A%A0%E6%89%93%E5%8D%B0%E6%9C%BA.png">
@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/%E6%B7%BB%E5%8A%A0%E6%89%93%E5%8D%B0%E6%9C%BA4.png">
 <meta property="og:image" content="http://example.com/%E6%89%93%E5%8D%B0%E6%9C%BA%E9%A6%96%E9%80%89%E9%A1%B9.png">
 <meta property="article:published_time" content="2024-08-06T09:24:31.000Z">
-<meta property="article:modified_time" content="2024-08-06T10:00:33.384Z">
+<meta property="article:modified_time" content="2024-08-06T10:07:27.895Z">
 <meta property="article:author" content="KuaYao">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/%E7%AE%A1%E7%90%86%E6%89%93%E5%8D%B0%E6%9C%BA.png">
@@ -70,7 +70,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/08/06/linux/CUPS/"><span class="title">CUPS</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/08/06/linux/CUPS/"><span class="title">Linux Cups 实战</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -83,18 +83,18 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-08-06T09:24:31.000Z">2024-08-06</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-06T10:00:33.384Z">2024-08-06</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-08-06T09:24:31.000Z">2024-08-06</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-06T10:07:27.895Z">2024-08-06</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>CUPS</span></h1>
+        <h1 class="text title"><span>Linux Cups 实战</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="综合打印平台-CUPS-Install-文档"><a href="#综合打印平台-CUPS-Install-文档" class="headerlink" title="综合打印平台 CUPS Install 文档"></a>综合打印平台 CUPS Install 文档</h1><p>本文以Rocky Linux 8.9 (Green Obsidian)为例<br><br>使用的身份均为root，并且没有启用防火墙。<br><br><br></p>
+  </div><article class="md-text content"><p>本文以Rocky Linux 8.9 (Green Obsidian)为例<br><br>使用的身份均为root，并且没有启用防火墙。<br><br><br></p>
 <ol>
 <li>安装cups</li>
 </ol>
@@ -159,7 +159,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E6%89%93%E5%8D%B0%E5%B9%B3%E5%8F%B0-CUPS-Install-%E6%96%87%E6%A1%A3"><span class="toc-text">综合打印平台 CUPS Install 文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-text">问题汇总</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer">
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-text">问题汇总</span></a></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel blur'>

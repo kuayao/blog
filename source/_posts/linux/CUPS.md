@@ -78,15 +78,15 @@ systemctl start cups
 4. 添加打印机以得实针式打印机为例
 
 - 打印机管理页面
-  ![](管理打印机.png)
+  ![](/image/linux/cups/管理打印机.png)
 - 添加打印机
-  ![](添加打印机.png)
-  ![](添加打印机2.png)
-  ![](添加打印机3.png)
+  ![](/image/linux/cups/添加打印机.png)
+  ![](/image/linux/cups/添加打印机2.png)
+  ![](/image/linux/cups/添加打印机3.png)
   配置驱动，手动添加PDD驱动，配置完成后，点击Add Printer
-  ![](添加打印机4.png)
+  ![](/image/linux/cups/添加打印机4.png)
 - 设置打印机首选项
-  ![](打印机首选项.png)
+  ![](/image/linux/cups/打印机首选项.png)
 
 ### 问题汇总
 

@@ -1,0 +1,3 @@
+[submodule "themes/stellar"]
+	path = themes/stellar
+	url = git@github.com:kuayao/hexo-theme-stellar.git

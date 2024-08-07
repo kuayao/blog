@@ -8,7 +8,6 @@ tags: linux
 
 本文以Rocky Linux 8.9 (Green Obsidian)为例<br>
 使用的身份均为root，并且没有启用防火墙。<br>
-<br>
 
 
 1. 安装cups

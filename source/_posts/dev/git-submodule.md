@@ -3,11 +3,11 @@ layout: dev
 title: Git Submodule 子项目全流程使用指南
 date: 2024-08-07 22:41:28
 tags: git
+rightbar: ['toc']
 ---
 Git Submodule 是 Git 中用于管理子项目的强大功能。它允许我们将一个 Git 仓库作为另一个 Git 仓库的子模块进行管理，从而使项目结构更加清晰，代码维护更加方便。   
 
 本指南将详细讲解 Git Submodule 的创建、规划、更新、合并全流程的使用过程和操作步骤，可以更好地理解和使用 Submodule。
-
 1. 创建 Submodule
     1. 初始化主项目 
         我们需要初始化一个主项目仓库

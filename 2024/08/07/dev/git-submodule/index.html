@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
-  <meta name="robots" content="none">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,20 +17,25 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>夸耀的学习笔记</title>
+  <title>Git Submodule 子项目全流程使用指南 - 夸耀的学习笔记</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="夸耀的学习笔记">
-<meta property="og:url" content="http://example.com/404.html">
+    <meta name="description" content="Git Submodule 是 Git 中用于管理子项目的强大功能。它允许我们将一个 Git 仓库作为另一个 Git 仓库的子模块进行管理，从而使项目结构更加清晰，代码维护更加方便。    本指南将详细讲解 Git Submodule 的创建、规划、更新、合并全流程的使用过程和操作步骤，可以更好地理解和使用 Submodule。  创建 Submodule 初始化主项目 我们需要初始化一个主项目仓">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Submodule 子项目全流程使用指南">
+<meta property="og:url" content="http://example.com/2024/08/07/dev/git-submodule/index.html">
 <meta property="og:site_name" content="夸耀的学习笔记">
+<meta property="og:description" content="Git Submodule 是 Git 中用于管理子项目的强大功能。它允许我们将一个 Git 仓库作为另一个 Git 仓库的子模块进行管理，从而使项目结构更加清晰，代码维护更加方便。    本指南将详细讲解 Git Submodule 的创建、规划、更新、合并全流程的使用过程和操作步骤，可以更好地理解和使用 Submodule。  创建 Submodule 初始化主项目 我们需要初始化一个主项目仓">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-07T14:41:28.000Z">
+<meta property="article:modified_time" content="2024-08-15T03:10:21.607Z">
 <meta property="article:author" content="KuaYao">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
   
   
   
-  
+  <meta name="keywords" content="git">
 
   <!-- feed -->
   
@@ -45,7 +50,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="404" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa index tech" id="start" layout="dev" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">夸耀的学习笔记</div><div class="sub cap">永无止境</div></a></div></header>
@@ -56,30 +61,92 @@
 
 <nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a></nav>
 </div>
-<div class="widgets">
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/06/sinopharm/sinopharm-starter-mybaits-plus/"><span class="title">Sinopharm Starter  sinopharm-starter-mybaits-plus</span></a><a class="item title" href="/2024/08/06/linux/cups-install/"><span class="title">Linux Cups 实战</span></a><a class="item title" href="/2024/08/07/dev/git-submodule/"><span class="title">Git Submodule 子项目全流程使用指南</span></a></div></widget>
-
-
-</div>
+<div class="widgets"></div>
 
 </div></aside><div class="l_main" id="main">
 
+<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">夸耀的学习笔记</div><div class="sub cap">永无止境</div></a></div></header>
 
 
-<article class='md-text error-page'>
-  <h1><img id='error' src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/404/1c830bfcd517d.svg' alt='404'></h1>
-  <p class='what'>
-    <strong>
-      很抱歉，您访问的页面不存在
-    </strong>
-  </p>
-  <p class='why'>
-    可能是输入地址有误或该地址已被删除
-  </p>
-  <br><br>
-  <a class='button' id='back' href="/">返回主页</a>
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+
+  <span class="sep"></span>
+  <a class="cap breadcrumb" href="/2024/08/07/dev/git-submodule/">Git Submodule 子项目全流程使用指南</a>
+  </div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-08-07T14:41:28.000Z">2024-08-07</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-15T03:10:21.607Z">2024-08-15</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Git Submodule 子项目全流程使用指南</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>Git Submodule 是 Git 中用于管理子项目的强大功能。它允许我们将一个 Git 仓库作为另一个 Git 仓库的子模块进行管理，从而使项目结构更加清晰，代码维护更加方便。   </p>
+<p>本指南将详细讲解 Git Submodule 的创建、规划、更新、合并全流程的使用过程和操作步骤，可以更好地理解和使用 Submodule。</p>
+<ol>
+<li>创建 Submodule<ol>
+<li>初始化主项目<br> 我们需要初始化一个主项目仓库 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init &lt;主项目名称&gt;</span><br></pre></td></tr></table></figure></li>
+<li>添加子模块<br> 使用 <strong>git submodule add</strong> 命令添加子模块 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add &lt;子模块 URL&gt; &lt;子模块目录&gt;</span><br></pre></td></tr></table></figure>
+ 例: 将名为 <strong>lib</strong> 的子模块添加到 <strong>main</strong> 项目中 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add git@github.com:user/lib.git lib</span><br></pre></td></tr></table></figure></li>
+<li>提交变更<br> 提交添加子模块的变更 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;添加子模块 lib&#x27;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>规划 Submodule<ol>
+<li>子模块版本控制<br> 我们可以像管理主项目一样管理子模块版本<ul>
+<li>克隆子模块<ul>
+<li><strong>–init</strong> 选项: 如果子模块尚未初始化，则将其初始化</li>
+<li><strong>–recursive</strong>  选项: 递归更新所有子模块，包括嵌套子模块<br>  该命令将执行以下操作:<ol>
+<li>初始化所有未初始化的子模块</li>
+<li>更新所有子模块到最新提交</li>
+<li>递归更新所有嵌套子模块  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>更新子模块  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --recursive</span><br></pre></td></tr></table></figure></li>
+<li>提交子模块变更    <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd lib</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新子模块 lib&quot;</span><br><span class="line">cd ..</span><br><span class="line">git submodule add lib</span><br><span class="line">git commit -m &quot;更新子模块版本&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>子模块分支管理<br> 子模块可以独立进行分支管理<ul>
+<li>切换子模块分支   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule checkout &lt;分支名称&gt;</span><br></pre></td></tr></table></figure></li>
+<li>创建子模块分支  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule branch &lt;分支名称&gt;</span><br></pre></td></tr></table></figure></li>
+<li>合并子模块分支  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule merge &lt;分支名称&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>更新 Submodule<ol>
+<li>更新所有子模块<br> 我们可以使用 <strong>git submodule update</strong> 命令更新所有子模块 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --recursive</span><br></pre></td></tr></table></figure></li>
+<li>更新指定子模块<br> 使用 <strong>git submodule update</strong> 命令更新指定的子模块 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update &lt;子模块目录&gt;</span><br></pre></td></tr></table></figure>
+ 例：更新 <strong>lib</strong> 子模块 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update lib</span><br></pre></td></tr></table></figure></li>
+<li>单独更新子模块<br> 使用 <strong>git fetch</strong> 和 <strong>git reset</strong> 命令单独更新子模块 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;子模块 URL&gt;</span><br><span class="line">git reset --hard &lt;子模块版本&gt;</span><br></pre></td></tr></table></figure>
+ 例：将 <strong>lib</strong> 子模块更新到 <strong>v1.0.0</strong> 版本 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch git@github.com:user/lib.git</span><br><span class="line">git reset --hard v1.0.0</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>合并 Submodule<ol>
+<li>合并子模块变更<br> 当子模块发生变更时，需要将其合并到主项目中 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;合并子模块变更&quot;</span><br></pre></td></tr></table></figure></li>
+<li>解决冲突<br> 如果子模块更新导致冲突，需要手动解决冲突 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git submodule status</span><br><span class="line">git submodule foreach git mergetool</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;解决子模块冲突&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>高级用法<ol>
+<li>子模块指针<br> 使用子模块指针来指定子模块的特定版本 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git submodule add --depth 1 git@github.com:user/lib.git lib</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure></li>
+<li>子模块克隆<br> 使用 <strong>git submodule clone</strong> 命令克隆子模块到单独的目录。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule clone git@github.com:user/lib.git lib</span><br></pre></td></tr></table></figure></li>
+<li>子模块删除<br> 使用 <strong>git submodule deinit</strong> 和 <strong>git rm</strong> 命令删除子模块 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git submodule deinit lib</span><br><span class="line">git rm -rf lib</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<p><strong>注意：</strong> 使用 Submodule 时需要注意以下几点</p>
+<ul>
+<li>子模块的更新可能会导致项目冲突，需要及时解决</li>
+<li>子模块的版本管理需要纳入项目的整体规划</li>
+</ul>
 </article>
-
 
 
 
